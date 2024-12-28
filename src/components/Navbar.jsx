@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
+import dropdownArrow from "../assets/Vector.svg";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(null); // Controls dropdown state
@@ -22,7 +23,7 @@ const Navbar = () => {
   return (
     <div>
       {/* Navbar */}
-      <nav className="flex justify-between items-center bg-white border-none w-full px-4 py-2 fixed top-0 left-0 z-50 shadow-md">
+      <nav className="flex justify-between items-center bg-white border-none w-full px-4 py-2 fixed top-[10px] left-0 z-50">
         {/* Logo Section */}
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="h-[50px] w-[80px]" />
@@ -52,17 +53,14 @@ const Navbar = () => {
                 onMouseEnter={() => handleDropdownToggle(index)}
                 onMouseLeave={() => handleDropdownToggle(null)}
               >
-                <span className="cursor-pointer">{item}</span>
-                <div
-                  className={`absolute top-full left-0 mt-2 w-40 bg-white shadow-lg border rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                    isDropdownOpen === index ? "opacity-100" : ""
-                  }`}
-                >
-                  <ul className="text-sm">
-                    <li className="px-4 py-2 hover:bg-gray-100">Option 1</li>
-                    <li className="px-4 py-2 hover:bg-gray-100">Option 2</li>
-                    <li className="px-4 py-2 hover:bg-gray-100">Option 3</li>
-                  </ul>
+                <div className="flex items-center cursor-pointer">
+                  {item}
+                  {/* Use the imported SVG as the dropdown icon */}
+                  <img
+                    src={dropdownArrow}
+                    alt="Dropdown"
+                    className="ml-2 h-2 mt-1 w-4 text-gray-500" // Adjust size as needed
+                  />
                 </div>
               </li>
             ) : (
@@ -75,7 +73,7 @@ const Navbar = () => {
 
         {/* Desktop "Book a Demo" Button */}
         <div className="hidden md:block">
-          <button className="px-4 py-2 bg-black text-white rounded-md text-sm">
+          <button className="px-4 py-2 bg-black text-white rounded-md text-sm ">
             Book a Demo
           </button>
         </div>
